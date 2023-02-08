@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/DataUser">
+        <file>Accounts1.xml</file>
+        <file>Accounts2.xml</file>
+        <file>Accounts3.xml</file>
+        <file>Accounts4.xml</file>
+        <file>Accounts5.xml</file>
+    </qresource>
+</RCC>

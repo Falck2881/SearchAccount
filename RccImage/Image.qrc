@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Image">
+        <file>AllAcc.jpg</file>
+        <file>Loading.jpg</file>
+        <file>login.png</file>
+        <file>MyAcc.png</file>
+        <file>Statistics.png</file>
+        <file>Choose.jpg</file>
+        <file>HelpID.jpg</file>
+        <file>Warning.png</file>
+    </qresource>
+</RCC>
