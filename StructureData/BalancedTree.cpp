@@ -163,13 +163,9 @@ void BalancedTree::removeAll()
 {
     if(this->descendants.size() != 0)
     {
-        for(int i = 0; i <= this->descendants.size(); ++i){
-            if(this->descendants.isEmpty()){
-                delete this;
-                break;
-            }
-            else{
-                removeAll(this->descendants[i]);
+        foreach(auto descendant, this->descendants){
+            if(!this->descendants.isEmpty()){
+                removeAll(descendant);
                 this->descendants.removeFirst();
             }
         }
@@ -183,14 +179,9 @@ void BalancedTree::removeAll(BalancedTree* currentNode)
         currentNode = nullptr;
     }
     else{
-        for(int i = 0; i <= currentNode->descendants.size(); ++i){
-            if(currentNode->descendants.isEmpty()){
-                delete currentNode;
-                currentNode = nullptr;
-                break;
-            }
-            else{
-                removeAll(currentNode->descendants[i]);
+        foreach(auto descendant, currentNode->descendants){
+            if(!currentNode->descendants.isEmpty()){
+                removeAll(descendant);
                 currentNode->descendants.removeFirst();
             }
         }
