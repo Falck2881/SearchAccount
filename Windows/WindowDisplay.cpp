@@ -30,7 +30,7 @@ void WindowDisplay::createWidgets()
 {
     frame = new QFrame(this);
     frame->setGeometry(QRect(0,0,900,500));
-    frame->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    frame->setFrameStyle(QFrame::Panel);
     frame->setLineWidth(2);
     frame->setMidLineWidth(3);
 

@@ -24,7 +24,6 @@ class WindowDisplay: public Window, Observers
         QPushButton* backButton;
         QTableWidget* table;
         QFrame* frame;
-        Tree* tree;
 };
 
 #endif // WINDOWDISPLAY_H

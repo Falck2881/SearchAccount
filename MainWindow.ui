@@ -119,7 +119,7 @@
       <x>360</x>
       <y>80</y>
       <width>181</width>
-      <height>87</height>
+      <height>89</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
@@ -188,9 +188,9 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>380</x>
+      <x>354</x>
       <y>200</y>
-      <width>161</width>
+      <width>201</width>
       <height>101</height>
      </rect>
     </property>
@@ -208,7 +208,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>175</width>
+         <width>200</width>
          <height>30</height>
         </size>
        </property>
@@ -233,7 +233,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>175</width>
+         <width>200</width>
          <height>30</height>
         </size>
        </property>
@@ -258,7 +258,7 @@
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
+         <width>200</width>
          <height>30</height>
         </size>
        </property>

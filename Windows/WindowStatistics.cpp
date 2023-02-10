@@ -24,7 +24,7 @@ void WindowStatistics::update(ManagerBuilders *subject)
     initializationTables(subject);
 }
 
-void WindowStatistics::initializationTables(ManagerBuilders *subject)
+void WindowStatistics::initializationTables(ManagerBuilders * const subject)
 {
     QList<BuilderTree*> listBuilders;
     listBuilders << subject->getFirstBuilder() << subject->getSecondBuilder();
@@ -41,7 +41,7 @@ void WindowStatistics::setTabsHeader(QList<BuilderTree*> listBuilders)
         ui->tabWidget->setTabText(index,listBuilders.at(index)->nameBuilder());
 }
 
-void WindowStatistics::placeCharacteristicsTreeInTable(QTableWidget* table, BuilderTree* builder)
+void WindowStatistics::placeCharacteristicsTreeInTable(QTableWidget* const table, BuilderTree* const builder)
 {
     QVector<QString> currantArrayCharacteristicsTree;
     for(uint8_t row = 0; row != table->rowCount(); ++row)

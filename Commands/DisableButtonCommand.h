@@ -8,7 +8,7 @@ class DisableButtonCommand: public ManagerLinkerCommand
 {
     public:
         DisableButtonCommand(QPushButton* const button);
-    private slots:
+    public slots:
         virtual void execute() final;
     private:
         QPushButton* const button;

@@ -6,6 +6,7 @@
 #include "Commands/ManagerLinkerCommand.h"
 #include "Commands/ManagerChoice.h"
 #include <QCheckBox>
+#include "DisableButtonCommand.h"
 
 namespace Ui {
 class WindowChoice;
@@ -38,6 +39,7 @@ class WindowChoice : public Window
         std::unique_ptr<ManagerLinkerCommand> managerInitSelectedObj;
         std::unique_ptr<ManagerLinkerCommand> backInMainWindow;
         std::unique_ptr<ManagerLinkerCommand> nextInWindowLoading;
+        std::unique_ptr<DisableButtonCommand> offNextButton;
 };
 
 #endif // WINDOWLOADING_H

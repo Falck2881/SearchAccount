@@ -9,14 +9,16 @@ class ManagerBuilders
 {
     public:
         ManagerBuilders();
-        void append(Observers* observer);
+        void append(Observers* const observer);
         void addMethodBuilding(std::unique_ptr<BuilderTree> newMethodBuilder);
         void initializeBuilders(const QVector<QVector<Account>> containerData);
-        Tree*& getReadyTree();
+        Tree* getReadyTree();
         BuilderTree* getFirstBuilder();
         BuilderTree* getSecondBuilder();
     private:
         void notifyAllObservers();
+        void removesBuilders();
+    private:
         QList<Observers*> listObservers;
         std::unique_ptr<BuilderTree> firstBuilder;
         std::unique_ptr<BuilderTree> secondBuilder;
