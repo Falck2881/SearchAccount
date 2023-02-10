@@ -2,71 +2,41 @@
 #include <QDebug>
 
 ManagerChoice::ManagerChoice(QList<QCheckBox*> buttonsChoice):buttonsChoice{buttonsChoice},
-                                                              firstChoice{nullptr},
-                                                              secondChoice{nullptr}
+                                                              currentAmountSelectedBuilders{0},
+                                                              maxAmountSelectedBuilders{2}
 {
 
 }
 
-void ManagerChoice::changedChoice(bool checked)
+void ManagerChoice::changedChoice(bool activeButton)
 {
-   if(findButtonChoice(checked)){
-        disableNotSelectedButtons();
-        if(isFinaleChoice()){
-            firstChoice = nullptr;
-            secondChoice = nullptr;
-            emit next();
-        }
-   }
-}
-
-bool ManagerChoice::findButtonChoice(bool checked)
-{
-    bool value{false};
-
-    foreach(auto button, buttonsChoice)
+    if(activeButton)
     {
-        if(button->isChecked() == checked)
-        {
-            if(firstChoice == nullptr){
-                firstChoice = button;
-                value = true;
-                break;
-            }
-            else if(secondChoice == nullptr){
-                secondChoice = button;
-                value = true;
-                break;
-            }
+        ++currentAmountSelectedBuilders;
+        if(currentAmountSelectedBuilders == maxAmountSelectedBuilders){
+            changeStatusNotActiveButtonsChoice();
+            emit onNext();
         }
-
     }
-
-    return value;
-}
-
-bool ManagerChoice::isFinaleChoice() const
-{
-    return firstChoice != nullptr && secondChoice != nullptr ?true:false;
-}
-
-void ManagerChoice::disableNotSelectedButtons()
-{
-    if(isFinaleChoice())
+    else
     {
-        foreach(auto button, buttonsChoice)
-        {
-            if(!button->isChecked())
-                button->setEnabled(false);
+        --currentAmountSelectedBuilders;
+        if(currentAmountSelectedBuilders != maxAmountSelectedBuilders){
+            emit offNext();
         }
     }
 }
 
-void ManagerChoice::enableButtons()
+void ManagerChoice::changeStatusNotActiveButtonsChoice()
 {
-    foreach(auto button, buttonsChoice)
+    foreach(auto buttonChoice, buttonsChoice)
     {
-        if(!button->isEnabled())
-            button->setEnabled(true);
+        if(!buttonChoice->isChecked())
+        {
+            if(!buttonChoice->isChecked())
+                buttonChoice->setEnabled(false);
+            else
+                qDebug() << "Warning! - There is no logical operator -> '!' ";
+        }
     }
 }

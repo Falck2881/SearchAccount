@@ -31,6 +31,7 @@ class WindowChoice : public Window
         void createConnectionWithButtonsChoiceUser();
         void createConnectionWithMainWindow();
         void createConnectionWithWindowLoading();
+        void createConnectionWithManagerChoice();
         Ui::WindowChoice* ui;
         Window* const winMain;
         std::unique_ptr<Window> winLoading;

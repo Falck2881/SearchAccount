@@ -47,6 +47,8 @@ Tree* ManagerBuilders::getReadyTree()
        return firstBuilder->getReadyTree();
     else if(secondBuilder->getReadyTree()->height() < firstBuilder->getReadyTree()->height())
        return secondBuilder->getReadyTree();
+    else if(firstBuilder->getReadyTree()->height() == secondBuilder->getReadyTree()->height())
+        return firstBuilder->getReadyTree();
 }
 
 

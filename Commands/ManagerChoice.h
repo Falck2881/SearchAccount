@@ -13,17 +13,16 @@ class ManagerChoice: public QObject
     public:
         ManagerChoice(QList<QCheckBox*> buttonsChoice);
     public slots:
-        void changedChoice(bool checked);
+        void changedChoice(bool active);
     signals:
-        void next();
+        void onNext();
+        void offNext();
     private:
-        bool isFinaleChoice() const;
-        bool findButtonChoice(bool checked);
-        void disableNotSelectedButtons();
-        void enableButtons();
+        void changeStatusNotActiveButtonsChoice();
+        void changeStatusActiveButtonsChoice();
         QList<QCheckBox*> buttonsChoice;
-        QCheckBox* firstChoice;
-        QCheckBox* secondChoice;
+        uint8_t currentAmountSelectedBuilders;
+        const uint8_t maxAmountSelectedBuilders;
 };
 
 #endif // MANAGERCHOICE_H

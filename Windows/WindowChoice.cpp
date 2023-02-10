@@ -109,6 +109,7 @@ void WindowChoice::setConnection()
     createConnectionWithButtonsChoiceUser();
     createConnectionWithMainWindow();
     createConnectionWithWindowLoading();
+    createConnectionWithManagerChoice();
 }
 
 void WindowChoice::createConnectionWithButtonsChoiceUser()
@@ -118,7 +119,6 @@ void WindowChoice::createConnectionWithButtonsChoiceUser()
     foreach(auto buttonChoice, buttonsChoice)
         connect(buttonChoice, &QCheckBox::stateChanged, managerChoice.get(), &ManagerChoice::changedChoice);
 
-    connect(managerChoice.get(), &ManagerChoice::next, managerInitSelectedObj.get(), &ManagerLinkerCommand::execute);
 }
 
 void WindowChoice::createConnectionWithMainWindow()
@@ -132,7 +132,12 @@ void WindowChoice::createConnectionWithWindowLoading()
 {
     connect(ui->nextButton, &QPushButton::clicked, nextInWindowLoading.get(), &ManagerLinkerCommand::execute);
     connect(ui->nextButton, &QPushButton::clicked, offNextButton.get(), &DisableButtonCommand::execute);
+}
 
+void WindowChoice::createConnectionWithManagerChoice()
+{
+    connect(managerChoice.get(), &ManagerChoice::offNext, offNextButton.get(), &DisableButtonCommand::execute);
+    connect(managerChoice.get(), &ManagerChoice::onNext, managerInitSelectedObj.get(), &ManagerLinkerCommand::execute);
 }
 
 WindowChoice::~WindowChoice()
