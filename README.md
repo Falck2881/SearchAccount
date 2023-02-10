@@ -1,7 +1,7 @@
 # SearchAccount - мой первый проект
 Доступные платформы:
 
-- OC Linux -
+- OC Linux - https://drive.google.com/drive/folders/1aEcNGoscvRcAK7-vu3eTw0Gye7q8vWkI?usp=share_link
 - OC Windows - 
 
 В этом проекте вы можете:
