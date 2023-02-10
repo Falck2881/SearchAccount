@@ -12,7 +12,7 @@ void ManagerBuilders::addMethodBuilding(std::unique_ptr<BuilderTree> newMethodBu
         secondBuilder = std::move(newMethodBuilder);
 }
 
-void ManagerBuilders::append(Observers *observer)
+void ManagerBuilders::append(Observers * const observer)
 {
     listObservers.push_back(observer);
 }
@@ -23,6 +23,7 @@ void ManagerBuilders::initializeBuilders(const QVector<QVector<Account>> contain
     secondBuilder->initializationConstruction(containerData);
 
     notifyAllObservers();
+    removesBuilders();
 }
 
 void ManagerBuilders::notifyAllObservers()
@@ -31,7 +32,16 @@ void ManagerBuilders::notifyAllObservers()
         observer->update(this);
 }
 
-Tree*& ManagerBuilders::getReadyTree()
+void ManagerBuilders::removesBuilders()
+{
+    if(firstBuilder != nullptr && secondBuilder != nullptr)
+    {
+        firstBuilder.reset(nullptr);
+        secondBuilder.reset(nullptr);
+    }
+}
+
+Tree* ManagerBuilders::getReadyTree()
 {
     if(firstBuilder->getReadyTree()->height() < secondBuilder->getReadyTree()->height())
        return firstBuilder->getReadyTree();

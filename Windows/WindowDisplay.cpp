@@ -21,7 +21,7 @@ void WindowDisplay::initializationWindow()
 
 void WindowDisplay::setPropertyWindow()
 {
-    this->setFixedSize(900,500);
+    this->setFixedSize(1024,768);
     this->setWindowTitle(QString("Display Accounts"));
     this->setWindowFlags(Qt::WindowStaysOnTopHint);
 }
@@ -29,19 +29,19 @@ void WindowDisplay::setPropertyWindow()
 void WindowDisplay::createWidgets()
 {
     frame = new QFrame(this);
-    frame->setGeometry(QRect(0,0,900,500));
-    frame->setFrameStyle(QFrame::Panel | QFrame::Raised);
+    frame->setGeometry(QRect(0,0,1022,766));
+    frame->setFrameStyle(QFrame::Panel);
     frame->setLineWidth(2);
     frame->setMidLineWidth(3);
 
     table = new QTableWidget(frame);
-    table->setFixedSize(875, 400);
+    table->setFixedSize(924, 668);
     table->setColumnCount(8);
     QList<QString> headers{"№ Employee","ID","Name","Meaning","Gender",
                            "Nationality","Number of visits", "Time last of visits"};
     table->setHorizontalHeaderLabels(headers);
-    table->setMinimumSize(QSize(875, 400));
-    table->setMaximumSize(QSize(875, 400));
+    table->setMinimumSize(QSize(924, 668));
+    table->setMaximumSize(QSize(924, 668));
     table->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     table->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     table->setSizeAdjustPolicy(QAbstractScrollArea::AdjustIgnored);
@@ -55,7 +55,7 @@ void WindowDisplay::createWidgets()
     table->verticalHeader()->setStretchLastSection(true);
     table->horizontalHeader()->setVisible(true);
     table->verticalHeader()->setVisible(true);
-
+    table->horizontalHeader()->setMinimumSectionSize(150);
     backButton = new QPushButton(QString("Back"));
     backButton->setFixedSize(170,25);
 }

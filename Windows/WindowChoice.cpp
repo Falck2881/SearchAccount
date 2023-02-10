@@ -30,6 +30,7 @@ WindowChoice::WindowChoice(Window* const winMain, std::shared_ptr<ManagerBuilder
 
 void WindowChoice::createCommands()
 {
+    offNextButton = std::make_unique<DisableButtonCommand>(ui->nextButton);
     createCommandManagerChoice();
     addCommandsInManagerInitChoice();
     createCommandsForSwitchingWindows();
@@ -66,10 +67,9 @@ void WindowChoice::createCommandsForSwitchingWindows()
 
 void WindowChoice::addCommandsInBackInMainWindow()
 {
-    auto offNextButton{std::make_unique<DisableButtonCommand>(ui->nextButton)};
-    backInMainWindow->append(std::move(offNextButton));
 
-    QList<QAbstractButton*> buttonsChoice{ui->choosePBBT,ui->chooseRBT,ui->chooseAvlTree};
+    QList<QAbstractButton*> buttonsChoice{ui->choosePBBT,ui->chooseRBT,ui->chooseAvlTree,
+                                          ui->chooseBTree, ui->chooseTwoThreeTree};
     auto offCheckedAllQCheckBox{std::make_unique<OffCheckedButtonsCommand>(buttonsChoice)};
     backInMainWindow->append(std::move(offCheckedAllQCheckBox));
     auto enabledAllButtonsChoice{std::make_unique<EnabledAllButtonsChoiceCommand>(buttonsChoice)};
@@ -116,19 +116,23 @@ void WindowChoice::createConnectionWithButtonsChoiceUser()
     QList<QCheckBox*> buttonsChoice{ui->chooseRBT,ui->choosePBBT,ui->chooseAvlTree,
                                     ui->chooseBTree,ui->chooseTwoThreeTree};
     foreach(auto buttonChoice, buttonsChoice)
-        connect(buttonChoice, &QCheckBox::toggled, managerChoice.get(), &ManagerChoice::fixateChoice);
+        connect(buttonChoice, &QCheckBox::stateChanged, managerChoice.get(), &ManagerChoice::changedChoice);
 
     connect(managerChoice.get(), &ManagerChoice::next, managerInitSelectedObj.get(), &ManagerLinkerCommand::execute);
 }
 
 void WindowChoice::createConnectionWithMainWindow()
 {
-    connect(ui->backButton, &QPushButton::pressed, backInMainWindow.get(), &ManagerLinkerCommand::execute);
+    connect(ui->backButton, &QPushButton::clicked, backInMainWindow.get(), &ManagerLinkerCommand::execute);
+    connect(ui->backButton, &QPushButton::clicked, offNextButton.get(), &DisableButtonCommand::execute);
+
 }
 
 void WindowChoice::createConnectionWithWindowLoading()
 {
-    QObject::connect(ui->nextButton, &QPushButton::pressed, nextInWindowLoading.get(), &ManagerLinkerCommand::execute);
+    connect(ui->nextButton, &QPushButton::clicked, nextInWindowLoading.get(), &ManagerLinkerCommand::execute);
+    connect(ui->nextButton, &QPushButton::clicked, offNextButton.get(), &DisableButtonCommand::execute);
+
 }
 
 WindowChoice::~WindowChoice()

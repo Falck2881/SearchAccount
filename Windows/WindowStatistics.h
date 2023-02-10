@@ -17,10 +17,10 @@ class WindowStatistics : public Window, Observers
         explicit WindowStatistics(std::shared_ptr<ManagerBuilders> subject);
         ~WindowStatistics();
     private:
-        virtual void update(ManagerBuilders *subject) final;
-        void initializationTables(ManagerBuilders* subject);
-        void setTabsHeader(QList<BuilderTree*> listBuilders);
-        void placeCharacteristicsTreeInTable(QTableWidget* table,BuilderTree* builder);
+        virtual void update(ManagerBuilders * const subject) final;
+        void initializationTables(ManagerBuilders* const subject);
+        void setTabsHeader(QList<BuilderTree*>  listBuilders);
+        void placeCharacteristicsTreeInTable(QTableWidget* const table,BuilderTree* const builder);
         virtual void setConnection() final;
         Ui::WindowStatistics *ui;
 };

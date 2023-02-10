@@ -6,5 +6,6 @@ DisableButtonCommand::DisableButtonCommand(QPushButton* const button):button{but
 
 void DisableButtonCommand::execute()
 {
-    button->setEnabled(false);
+    if(button->isEnabled())
+        button->setEnabled(false);
 }
