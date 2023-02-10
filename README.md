@@ -2,7 +2,7 @@
 Доступные платформы:
 
 - OC Linux - https://drive.google.com/drive/folders/1aEcNGoscvRcAK7-vu3eTw0Gye7q8vWkI?usp=share_link
-- OC Windows - 
+- OC Windows - https://drive.google.com/drive/folders/1xrf2-8kWKQP07RbT9QQ0BrCC6Sm_2TeI?usp=share_link
 
 # О чём этот проект:
 
